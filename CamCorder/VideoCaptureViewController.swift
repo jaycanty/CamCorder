@@ -121,8 +121,8 @@ class VideoCaptureViewController: UIViewController {
 extension VideoCaptureViewController: AVCaptureFileOutputRecordingDelegate {
     
     func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {
-        fileManager = FileManager()
-        fileManager?.startObserving(url: fileURL)
+        fileManager = FileManager(url: fileURL)
+        fileManager?.startObserving()
     }
     
     func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {

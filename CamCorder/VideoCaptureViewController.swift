@@ -27,6 +27,7 @@ class VideoCaptureViewController: UIViewController {
     
     private var state: CaptureState = .stopped
 
+    // MARK - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -74,27 +75,40 @@ class VideoCaptureViewController: UIViewController {
         if let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession) {
             previewLayer.frame = view.bounds
             view.layer.addSublayer(previewLayer)
+            previewLayer.zPosition = -1
             previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
             let orientation: AVCaptureVideoOrientation =  AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue)!
             previewLayer.connection.videoOrientation = orientation
         }
-        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        captureSession.startRunning()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        captureSession.stopRunning()
+    }
+    
+    // MARK: - handlers
     @IBAction func controlButtonHit(_ sender: UIButton) {
         switch state {
         case .stopped:
             sender.isSelected = true
-            captureSession.startRunning()
             state = .recording
         case .recording:
             sender.isSelected = false
-            captureSession.stopRunning()
             state = .stopped
         }
     }
+    
+    // MARK: - helpers
+    
 }
 
+// MARK: - AVCaptureFileOutputRecordingDelegate
 extension VideoCaptureViewController: AVCaptureFileOutputRecordingDelegate {
     
     func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {

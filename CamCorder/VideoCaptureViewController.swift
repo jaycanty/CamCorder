@@ -21,9 +21,9 @@ class VideoCaptureViewController: UIViewController {
     @IBOutlet weak var controlButton: UIButton!
     
     let captureSession = AVCaptureSession()
-    var videoInputDevice: AVCaptureDeviceInput?
     var movieFileOutput: AVCaptureMovieFileOutput!
     var videoDevice: AVCaptureDevice!
+    var fileManager: FileManager?
     
     private var state: CaptureState = .stopped
 
@@ -38,7 +38,7 @@ class VideoCaptureViewController: UIViewController {
             position: .front
         )
         do {
-            videoInputDevice = try AVCaptureDeviceInput(device: videoDevice)
+            let videoInputDevice = try AVCaptureDeviceInput(device: videoDevice)
             if captureSession.canAddInput(videoInputDevice) {
                 captureSession.addInput(videoInputDevice)
             }
@@ -99,7 +99,7 @@ class VideoCaptureViewController: UIViewController {
             startRecording()
             state = .recording
         case .recording:
-            movieFileOutput.stopRecording()
+            stopRecording()
             state = .stopped
         }
         navigationController?.setNavigationBarHidden(state == .recording, animated: true)
@@ -108,9 +108,12 @@ class VideoCaptureViewController: UIViewController {
     
     // MARK: - helpers
     private func startRecording() {
-        
-        let outputFilePath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("movie.mov")
-        movieFileOutput.startRecording( toOutputFileURL: outputFilePath, recordingDelegate: self)
+        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("movie.mov")
+        movieFileOutput.startRecording( toOutputFileURL: fileURL, recordingDelegate: self)
+    }
+    
+    private func stopRecording() {
+        movieFileOutput.stopRecording()
     }
 }
 
@@ -118,13 +121,13 @@ class VideoCaptureViewController: UIViewController {
 extension VideoCaptureViewController: AVCaptureFileOutputRecordingDelegate {
     
     func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {
-        
-        // TODO: maybe set an observer on the file
-        print("Did start capture: \(fileURL.absoluteString)")
+        fileManager = FileManager()
+        fileManager?.startObserving(url: fileURL)
     }
     
     func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
-        
         print("Did end capture: \(outputFileURL.absoluteString)")
+        fileManager?.stopObserving()
+        fileManager = nil
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		692BE6FA1E688667004960B4 /* VideoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692BE6F91E688667004960B4 /* VideoCaptureViewController.swift */; };
+		692BE6FE1E68C0EC004960B4 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692BE6FD1E68C0EC004960B4 /* FileManager.swift */; };
 		6944F0041E687C9A00B1DDE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944F0031E687C9A00B1DDE0 /* AppDelegate.swift */; };
 		6944F0091E687C9A00B1DDE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6944F0071E687C9A00B1DDE0 /* Main.storyboard */; };
 		6944F00B1E687C9A00B1DDE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6944F00A1E687C9A00B1DDE0 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		692BE6F91E688667004960B4 /* VideoCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureViewController.swift; sourceTree = "<group>"; };
+		692BE6FD1E68C0EC004960B4 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		6944F0001E687C9A00B1DDE0 /* CamCorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamCorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6944F0031E687C9A00B1DDE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6944F0081E687C9A00B1DDE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				6944F00F1E687C9A00B1DDE0 /* Info.plist */,
 				6944F0251E68807A00B1DDE0 /* VideoListViewController.swift */,
 				692BE6F91E688667004960B4 /* VideoCaptureViewController.swift */,
+				692BE6FD1E68C0EC004960B4 /* FileManager.swift */,
 			);
 			path = CamCorder;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				6944F0261E68807A00B1DDE0 /* VideoListViewController.swift in Sources */,
 				6944F0041E687C9A00B1DDE0 /* AppDelegate.swift in Sources */,
 				692BE6FA1E688667004960B4 /* VideoCaptureViewController.swift in Sources */,
+				692BE6FE1E68C0EC004960B4 /* FileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

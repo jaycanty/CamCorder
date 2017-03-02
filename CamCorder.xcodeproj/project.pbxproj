@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		692BE6FA1E688667004960B4 /* VideoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692BE6F91E688667004960B4 /* VideoCaptureViewController.swift */; };
 		6944F0041E687C9A00B1DDE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944F0031E687C9A00B1DDE0 /* AppDelegate.swift */; };
 		6944F0091E687C9A00B1DDE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6944F0071E687C9A00B1DDE0 /* Main.storyboard */; };
 		6944F00B1E687C9A00B1DDE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6944F00A1E687C9A00B1DDE0 /* Assets.xcassets */; };
 		6944F00E1E687C9A00B1DDE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6944F00C1E687C9A00B1DDE0 /* LaunchScreen.storyboard */; };
 		6944F0191E687C9A00B1DDE0 /* CamCorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944F0181E687C9A00B1DDE0 /* CamCorderTests.swift */; };
-		6944F0241E687D1B00B1DDE0 /* VideoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944F0231E687D1B00B1DDE0 /* VideoCaptureViewController.swift */; };
+		6944F0261E68807A00B1DDE0 /* VideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944F0251E68807A00B1DDE0 /* VideoListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		692BE6F91E688667004960B4 /* VideoCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureViewController.swift; sourceTree = "<group>"; };
 		6944F0001E687C9A00B1DDE0 /* CamCorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamCorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6944F0031E687C9A00B1DDE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6944F0081E687C9A00B1DDE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,7 +37,7 @@
 		6944F0141E687C9A00B1DDE0 /* CamCorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamCorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6944F0181E687C9A00B1DDE0 /* CamCorderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamCorderTests.swift; sourceTree = "<group>"; };
 		6944F01A1E687C9A00B1DDE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6944F0231E687D1B00B1DDE0 /* VideoCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureViewController.swift; sourceTree = "<group>"; };
+		6944F0251E68807A00B1DDE0 /* VideoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +84,8 @@
 				6944F00A1E687C9A00B1DDE0 /* Assets.xcassets */,
 				6944F00C1E687C9A00B1DDE0 /* LaunchScreen.storyboard */,
 				6944F00F1E687C9A00B1DDE0 /* Info.plist */,
-				6944F0231E687D1B00B1DDE0 /* VideoCaptureViewController.swift */,
+				6944F0251E68807A00B1DDE0 /* VideoListViewController.swift */,
+				692BE6F91E688667004960B4 /* VideoCaptureViewController.swift */,
 			);
 			path = CamCorder;
 			sourceTree = "<group>";
@@ -201,8 +204,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6944F0241E687D1B00B1DDE0 /* VideoCaptureViewController.swift in Sources */,
+				6944F0261E68807A00B1DDE0 /* VideoListViewController.swift in Sources */,
 				6944F0041E687C9A00B1DDE0 /* AppDelegate.swift in Sources */,
+				692BE6FA1E688667004960B4 /* VideoCaptureViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +414,7 @@
 				6944F01F1E687C9A00B1DDE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6944F0201E687C9A00B1DDE0 /* Build configuration list for PBXNativeTarget "CamCorderTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +423,7 @@
 				6944F0221E687C9A00B1DDE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

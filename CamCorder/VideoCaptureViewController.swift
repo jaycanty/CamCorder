@@ -96,16 +96,22 @@ class VideoCaptureViewController: UIViewController {
     @IBAction func controlButtonHit(_ sender: UIButton) {
         switch state {
         case .stopped:
+            startRecording()
             sender.isSelected = true
             state = .recording
         case .recording:
+            movieFileOutput.stopRecording()
             sender.isSelected = false
             state = .stopped
         }
     }
     
     // MARK: - helpers
-    
+    private func startRecording() {
+        
+        let outputFilePath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("movie.mov")
+        movieFileOutput.startRecording( toOutputFileURL: outputFilePath, recordingDelegate: self)
+    }
 }
 
 // MARK: - AVCaptureFileOutputRecordingDelegate

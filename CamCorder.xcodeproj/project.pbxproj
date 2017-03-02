@@ -12,6 +12,7 @@
 		6944F00B1E687C9A00B1DDE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6944F00A1E687C9A00B1DDE0 /* Assets.xcassets */; };
 		6944F00E1E687C9A00B1DDE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6944F00C1E687C9A00B1DDE0 /* LaunchScreen.storyboard */; };
 		6944F0191E687C9A00B1DDE0 /* CamCorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944F0181E687C9A00B1DDE0 /* CamCorderTests.swift */; };
+		6944F0241E687D1B00B1DDE0 /* VideoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944F0231E687D1B00B1DDE0 /* VideoCaptureViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		6944F0141E687C9A00B1DDE0 /* CamCorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamCorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6944F0181E687C9A00B1DDE0 /* CamCorderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamCorderTests.swift; sourceTree = "<group>"; };
 		6944F01A1E687C9A00B1DDE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6944F0231E687D1B00B1DDE0 /* VideoCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				6944F00A1E687C9A00B1DDE0 /* Assets.xcassets */,
 				6944F00C1E687C9A00B1DDE0 /* LaunchScreen.storyboard */,
 				6944F00F1E687C9A00B1DDE0 /* Info.plist */,
+				6944F0231E687D1B00B1DDE0 /* VideoCaptureViewController.swift */,
 			);
 			path = CamCorder;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6944F0241E687D1B00B1DDE0 /* VideoCaptureViewController.swift in Sources */,
 				6944F0041E687C9A00B1DDE0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

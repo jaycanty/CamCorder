@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24C9B160765C7B2357FCE7FA /* Pods_CamCorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E240236392E86E6154FCE23 /* Pods_CamCorder.framework */; };
 		692BE6FA1E688667004960B4 /* VideoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692BE6F91E688667004960B4 /* VideoCaptureViewController.swift */; };
 		692BE6FE1E68C0EC004960B4 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692BE6FD1E68C0EC004960B4 /* FileManager.swift */; };
+		692BE7001E68DD5D004960B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 692BE6FF1E68DD5D004960B4 /* GoogleService-Info.plist */; };
 		6944F0041E687C9A00B1DDE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944F0031E687C9A00B1DDE0 /* AppDelegate.swift */; };
 		6944F0091E687C9A00B1DDE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6944F0071E687C9A00B1DDE0 /* Main.storyboard */; };
 		6944F00B1E687C9A00B1DDE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6944F00A1E687C9A00B1DDE0 /* Assets.xcassets */; };
@@ -28,8 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13D06D915692F87209FE865A /* Pods-CamCorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CamCorder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CamCorder/Pods-CamCorder.debug.xcconfig"; sourceTree = "<group>"; };
 		692BE6F91E688667004960B4 /* VideoCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureViewController.swift; sourceTree = "<group>"; };
 		692BE6FD1E68C0EC004960B4 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		692BE6FF1E68DD5D004960B4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6944F0001E687C9A00B1DDE0 /* CamCorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamCorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6944F0031E687C9A00B1DDE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6944F0081E687C9A00B1DDE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,6 +44,9 @@
 		6944F0181E687C9A00B1DDE0 /* CamCorderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamCorderTests.swift; sourceTree = "<group>"; };
 		6944F01A1E687C9A00B1DDE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6944F0251E68807A00B1DDE0 /* VideoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListViewController.swift; sourceTree = "<group>"; };
+		6EB93FD08C04AE0BFC70D26B /* Pods-CamCorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CamCorder.release.xcconfig"; path = "Pods/Target Support Files/Pods-CamCorder/Pods-CamCorder.release.xcconfig"; sourceTree = "<group>"; };
+		9E240236392E86E6154FCE23 /* Pods_CamCorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CamCorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB24D283250807EFDE1FB931 /* Pods_CamCorderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CamCorderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24C9B160765C7B2357FCE7FA /* Pods_CamCorder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +74,8 @@
 				6944F0021E687C9A00B1DDE0 /* CamCorder */,
 				6944F0171E687C9A00B1DDE0 /* CamCorderTests */,
 				6944F0011E687C9A00B1DDE0 /* Products */,
+				DCE5E9042A8220CA7D9EF462 /* Pods */,
+				92D364F9BFE043315375778D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +99,7 @@
 				6944F0251E68807A00B1DDE0 /* VideoListViewController.swift */,
 				692BE6F91E688667004960B4 /* VideoCaptureViewController.swift */,
 				692BE6FD1E68C0EC004960B4 /* FileManager.swift */,
+				692BE6FF1E68DD5D004960B4 /* GoogleService-Info.plist */,
 			);
 			path = CamCorder;
 			sourceTree = "<group>";
@@ -102,6 +113,24 @@
 			path = CamCorderTests;
 			sourceTree = "<group>";
 		};
+		92D364F9BFE043315375778D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E240236392E86E6154FCE23 /* Pods_CamCorder.framework */,
+				DB24D283250807EFDE1FB931 /* Pods_CamCorderTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DCE5E9042A8220CA7D9EF462 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				13D06D915692F87209FE865A /* Pods-CamCorder.debug.xcconfig */,
+				6EB93FD08C04AE0BFC70D26B /* Pods-CamCorder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,9 +138,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6944F01D1E687C9A00B1DDE0 /* Build configuration list for PBXNativeTarget "CamCorder" */;
 			buildPhases = (
+				23B371E8A02C7DE670CDBDA1 /* [CP] Check Pods Manifest.lock */,
 				6944EFFC1E687C9A00B1DDE0 /* Sources */,
 				6944EFFD1E687C9A00B1DDE0 /* Frameworks */,
 				6944EFFE1E687C9A00B1DDE0 /* Resources */,
+				70D4FEEF080BAF98840C4C09 /* [CP] Embed Pods Frameworks */,
+				8C96068FAC4844A30A59095B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -188,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6944F00E1E687C9A00B1DDE0 /* LaunchScreen.storyboard in Resources */,
+				692BE7001E68DD5D004960B4 /* GoogleService-Info.plist in Resources */,
 				6944F00B1E687C9A00B1DDE0 /* Assets.xcassets in Resources */,
 				6944F0091E687C9A00B1DDE0 /* Main.storyboard in Resources */,
 			);
@@ -201,6 +234,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		23B371E8A02C7DE670CDBDA1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		70D4FEEF080BAF98840C4C09 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CamCorder/Pods-CamCorder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C96068FAC4844A30A59095B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CamCorder/Pods-CamCorder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6944EFFC1E687C9A00B1DDE0 /* Sources */ = {
@@ -345,6 +426,7 @@
 		};
 		6944F01E1E687C9A00B1DDE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13D06D915692F87209FE865A /* Pods-CamCorder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P29986982Q;
@@ -358,6 +440,7 @@
 		};
 		6944F01F1E687C9A00B1DDE0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EB93FD08C04AE0BFC70D26B /* Pods-CamCorder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P29986982Q;

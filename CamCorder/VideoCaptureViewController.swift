@@ -77,8 +77,7 @@ class VideoCaptureViewController: UIViewController {
             view.layer.addSublayer(previewLayer)
             previewLayer.zPosition = -1
             previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-            let orientation: AVCaptureVideoOrientation =  AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue)!
-            previewLayer.connection.videoOrientation = orientation
+            previewLayer.connection.videoOrientation = .portrait
         }
     }
     
@@ -94,16 +93,17 @@ class VideoCaptureViewController: UIViewController {
     
     // MARK: - handlers
     @IBAction func controlButtonHit(_ sender: UIButton) {
+        
         switch state {
         case .stopped:
             startRecording()
-            sender.isSelected = true
             state = .recording
         case .recording:
             movieFileOutput.stopRecording()
-            sender.isSelected = false
             state = .stopped
         }
+        navigationController?.setNavigationBarHidden(state == .recording, animated: true)
+        sender.isSelected = state == .recording
     }
     
     // MARK: - helpers

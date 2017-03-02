@@ -11,17 +11,12 @@ import AVFoundation
 
 class VideoListViewController: UIViewController {
 
+    // MARK - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    // MARK - actions
     @IBAction func addVideoButtonHit(_ sender: UIBarButtonItem) {
         checkVideoPermissions() { isVideoAllowed in
             if isVideoAllowed {
@@ -34,7 +29,8 @@ class VideoListViewController: UIViewController {
         }
     }
     
-    func checkVideoPermissions(complete: @escaping (Bool)->()) {
+    // MARK - helpers
+    private func checkVideoPermissions(complete: @escaping (Bool)->()) {
         let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
         if status == .authorized {
             complete(true)
@@ -49,7 +45,7 @@ class VideoListViewController: UIViewController {
         }
     }
     
-    func checkAudioPermissions(complete: @escaping (Bool)->()) {
+    private func checkAudioPermissions(complete: @escaping (Bool)->()) {
         let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeAudio)
         if status == .authorized {
             complete(true)
@@ -64,15 +60,13 @@ class VideoListViewController: UIViewController {
         }
     }
     
-    func showVideoCapture() {
+    private func showVideoCapture() {
         if let videoCaptureViewController = storyboard?.instantiateViewController(withIdentifier: "VideoCaptureViewController") {
-            
             navigationController?.pushViewController(videoCaptureViewController, animated: true)
-            
         }
     }
     
-    func showError() {
+    private func showError() {
         // TODO: show popup
     }
 }

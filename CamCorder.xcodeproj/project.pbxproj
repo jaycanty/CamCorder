@@ -1,0 +1,421 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6944F0041E687C9A00B1DDE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944F0031E687C9A00B1DDE0 /* AppDelegate.swift */; };
+		6944F0091E687C9A00B1DDE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6944F0071E687C9A00B1DDE0 /* Main.storyboard */; };
+		6944F00B1E687C9A00B1DDE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6944F00A1E687C9A00B1DDE0 /* Assets.xcassets */; };
+		6944F00E1E687C9A00B1DDE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6944F00C1E687C9A00B1DDE0 /* LaunchScreen.storyboard */; };
+		6944F0191E687C9A00B1DDE0 /* CamCorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944F0181E687C9A00B1DDE0 /* CamCorderTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6944F0151E687C9A00B1DDE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6944EFF81E687C9A00B1DDE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6944EFFF1E687C9A00B1DDE0;
+			remoteInfo = CamCorder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6944F0001E687C9A00B1DDE0 /* CamCorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamCorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6944F0031E687C9A00B1DDE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6944F0081E687C9A00B1DDE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6944F00A1E687C9A00B1DDE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6944F00D1E687C9A00B1DDE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6944F00F1E687C9A00B1DDE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6944F0141E687C9A00B1DDE0 /* CamCorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamCorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6944F0181E687C9A00B1DDE0 /* CamCorderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamCorderTests.swift; sourceTree = "<group>"; };
+		6944F01A1E687C9A00B1DDE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6944EFFD1E687C9A00B1DDE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6944F0111E687C9A00B1DDE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6944EFF71E687C9A00B1DDE0 = {
+			isa = PBXGroup;
+			children = (
+				6944F0021E687C9A00B1DDE0 /* CamCorder */,
+				6944F0171E687C9A00B1DDE0 /* CamCorderTests */,
+				6944F0011E687C9A00B1DDE0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6944F0011E687C9A00B1DDE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6944F0001E687C9A00B1DDE0 /* CamCorder.app */,
+				6944F0141E687C9A00B1DDE0 /* CamCorderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6944F0021E687C9A00B1DDE0 /* CamCorder */ = {
+			isa = PBXGroup;
+			children = (
+				6944F0031E687C9A00B1DDE0 /* AppDelegate.swift */,
+				6944F0071E687C9A00B1DDE0 /* Main.storyboard */,
+				6944F00A1E687C9A00B1DDE0 /* Assets.xcassets */,
+				6944F00C1E687C9A00B1DDE0 /* LaunchScreen.storyboard */,
+				6944F00F1E687C9A00B1DDE0 /* Info.plist */,
+			);
+			path = CamCorder;
+			sourceTree = "<group>";
+		};
+		6944F0171E687C9A00B1DDE0 /* CamCorderTests */ = {
+			isa = PBXGroup;
+			children = (
+				6944F0181E687C9A00B1DDE0 /* CamCorderTests.swift */,
+				6944F01A1E687C9A00B1DDE0 /* Info.plist */,
+			);
+			path = CamCorderTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6944EFFF1E687C9A00B1DDE0 /* CamCorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6944F01D1E687C9A00B1DDE0 /* Build configuration list for PBXNativeTarget "CamCorder" */;
+			buildPhases = (
+				6944EFFC1E687C9A00B1DDE0 /* Sources */,
+				6944EFFD1E687C9A00B1DDE0 /* Frameworks */,
+				6944EFFE1E687C9A00B1DDE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CamCorder;
+			productName = CamCorder;
+			productReference = 6944F0001E687C9A00B1DDE0 /* CamCorder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6944F0131E687C9A00B1DDE0 /* CamCorderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6944F0201E687C9A00B1DDE0 /* Build configuration list for PBXNativeTarget "CamCorderTests" */;
+			buildPhases = (
+				6944F0101E687C9A00B1DDE0 /* Sources */,
+				6944F0111E687C9A00B1DDE0 /* Frameworks */,
+				6944F0121E687C9A00B1DDE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6944F0161E687C9A00B1DDE0 /* PBXTargetDependency */,
+			);
+			name = CamCorderTests;
+			productName = CamCorderTests;
+			productReference = 6944F0141E687C9A00B1DDE0 /* CamCorderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6944EFF81E687C9A00B1DDE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = jay;
+				TargetAttributes = {
+					6944EFFF1E687C9A00B1DDE0 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = P29986982Q;
+						ProvisioningStyle = Automatic;
+					};
+					6944F0131E687C9A00B1DDE0 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = P29986982Q;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6944EFFF1E687C9A00B1DDE0;
+					};
+				};
+			};
+			buildConfigurationList = 6944EFFB1E687C9A00B1DDE0 /* Build configuration list for PBXProject "CamCorder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6944EFF71E687C9A00B1DDE0;
+			productRefGroup = 6944F0011E687C9A00B1DDE0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6944EFFF1E687C9A00B1DDE0 /* CamCorder */,
+				6944F0131E687C9A00B1DDE0 /* CamCorderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6944EFFE1E687C9A00B1DDE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6944F00E1E687C9A00B1DDE0 /* LaunchScreen.storyboard in Resources */,
+				6944F00B1E687C9A00B1DDE0 /* Assets.xcassets in Resources */,
+				6944F0091E687C9A00B1DDE0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6944F0121E687C9A00B1DDE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6944EFFC1E687C9A00B1DDE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6944F0041E687C9A00B1DDE0 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6944F0101E687C9A00B1DDE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6944F0191E687C9A00B1DDE0 /* CamCorderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6944F0161E687C9A00B1DDE0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6944EFFF1E687C9A00B1DDE0 /* CamCorder */;
+			targetProxy = 6944F0151E687C9A00B1DDE0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6944F0071E687C9A00B1DDE0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6944F0081E687C9A00B1DDE0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6944F00C1E687C9A00B1DDE0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6944F00D1E687C9A00B1DDE0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6944F01B1E687C9A00B1DDE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6944F01C1E687C9A00B1DDE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6944F01E1E687C9A00B1DDE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P29986982Q;
+				INFOPLIST_FILE = CamCorder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jay.CamCorder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		6944F01F1E687C9A00B1DDE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P29986982Q;
+				INFOPLIST_FILE = CamCorder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jay.CamCorder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		6944F0211E687C9A00B1DDE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = P29986982Q;
+				INFOPLIST_FILE = CamCorderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jay.CamCorderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CamCorder.app/CamCorder";
+			};
+			name = Debug;
+		};
+		6944F0221E687C9A00B1DDE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = P29986982Q;
+				INFOPLIST_FILE = CamCorderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jay.CamCorderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CamCorder.app/CamCorder";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6944EFFB1E687C9A00B1DDE0 /* Build configuration list for PBXProject "CamCorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6944F01B1E687C9A00B1DDE0 /* Debug */,
+				6944F01C1E687C9A00B1DDE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6944F01D1E687C9A00B1DDE0 /* Build configuration list for PBXNativeTarget "CamCorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6944F01E1E687C9A00B1DDE0 /* Debug */,
+				6944F01F1E687C9A00B1DDE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6944F0201E687C9A00B1DDE0 /* Build configuration list for PBXNativeTarget "CamCorderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6944F0211E687C9A00B1DDE0 /* Debug */,
+				6944F0221E687C9A00B1DDE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6944EFF81E687C9A00B1DDE0 /* Project object */;
+}

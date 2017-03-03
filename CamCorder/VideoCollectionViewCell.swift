@@ -41,7 +41,6 @@ class VideoCollectionViewCell: UICollectionViewCell {
         DispatchQueue.global().async { [weak self] in
             // hack because too lazy to put imageURL up to firebase
             let imageURL = url.replacingOccurrences(of: "videos", with: "images")
-            print(imageURL)
             do {
                 let data = try Data(contentsOf: URL(string: imageURL)!)
                 let image = UIImage(data: data)

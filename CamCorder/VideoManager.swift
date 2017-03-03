@@ -9,16 +9,20 @@
 import Foundation
 import UIKit
 
-class VideoManager: NSObject {
+class VideoManager {
     
     static let shared = VideoManager()
     
-    lazy var uploadQueue: OperationQueue = {
+    private lazy var uploadQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.name = "Upload Queue"
         queue.maxConcurrentOperationCount = 1
         return queue
     }()
+    
+    var operations: [Operation] {
+        return uploadQueue.operations
+    }
     
     func startUpload(url: URL, id: String) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true

@@ -73,14 +73,14 @@ class VideoUploader: Operation {
         prepareAndUpload()
     }
     
-    func prepareAndUpload() {
+    private func prepareAndUpload() {
         uploadFile()
         if let image = getDisplayImage() {
             upload(image: image, forID: id)
         }
     }
     
-    func uploadFile() {
+    private func uploadFile() {
         let ref = storage.reference(withPath: "videos").child(id)
         let task = ref.putFile(fileURL)
         task.observe(.progress) { [weak self] snapshot in
@@ -106,7 +106,7 @@ class VideoUploader: Operation {
         }
     }
     
-    func upload(image: UIImage, forID id: String) {
+    private func upload(image: UIImage, forID id: String) {
         guard let data = UIImagePNGRepresentation(image) else {
             return
         }
@@ -116,7 +116,7 @@ class VideoUploader: Operation {
         }
     }
     
-    func writeVideo(atURL videoURL: URL) {
+    private func writeVideo(atURL videoURL: URL) {
         let ref = database.reference().child("videos")
         let movieRef = ref.childByAutoId()
         movieRef.setValue(videoURL.absoluteString) { [weak self] error, ref in
@@ -124,7 +124,7 @@ class VideoUploader: Operation {
         }
     }
     
-    func getDisplayImage() -> UIImage? {
+    private func getDisplayImage() -> UIImage? {
         let asset = AVURLAsset(url: fileURL)
         let generator = AVAssetImageGenerator(asset: asset)
         generator.appliesPreferredTrackTransform = true

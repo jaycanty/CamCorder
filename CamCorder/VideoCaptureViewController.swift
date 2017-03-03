@@ -63,7 +63,7 @@ class VideoCaptureViewController: UIViewController {
     // MARK: - helpers
     private func startRecording() {
         uuid = UUID().uuidString
-        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(uuid!)
+        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(uuid! + ".mov")
         movieFileOutput.startRecording( toOutputFileURL: fileURL, recordingDelegate: self)
     }
     

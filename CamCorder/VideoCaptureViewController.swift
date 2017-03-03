@@ -24,6 +24,7 @@ class VideoCaptureViewController: UIViewController {
     var movieFileOutput: AVCaptureMovieFileOutput!
     var videoDevice: AVCaptureDevice!
     var fileManager: FileManager?
+    let fileService = FileService()
     
     private var state: CaptureState = .stopped
 
@@ -121,13 +122,9 @@ class VideoCaptureViewController: UIViewController {
 extension VideoCaptureViewController: AVCaptureFileOutputRecordingDelegate {
     
     func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {
-        fileManager = FileManager(url: fileURL)
-        fileManager?.startObserving()
     }
     
     func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
-        print("Did end capture: \(outputFileURL.absoluteString)")
-        fileManager?.stopObserving()
-        fileManager = nil
+        fileService.uploadFile(withURL: outputFileURL)
     }
 }

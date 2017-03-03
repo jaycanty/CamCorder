@@ -33,6 +33,7 @@ class VideoCaptureViewController: UIViewController {
     // MARK - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "CamCorder"
         fileService.delegate = self
         configureVideoCapture()
         setupProgressView()
@@ -50,17 +51,18 @@ class VideoCaptureViewController: UIViewController {
     
     // MARK: - handlers
     @IBAction func controlButtonHit(_ sender: UIButton) {
-        
+        var isRecording = true
         switch state {
         case .stopped:
             startRecording()
             state = .recording
         case .recording:
+            isRecording = false
             stopRecording()
             state = .stopped
         }
-        navigationController?.setNavigationBarHidden(state == .recording, animated: true)
-        sender.isSelected = state == .recording
+        navigationController?.setNavigationBarHidden(isRecording, animated: true)
+        sender.isSelected = isRecording
     }
     
     // MARK: - helpers

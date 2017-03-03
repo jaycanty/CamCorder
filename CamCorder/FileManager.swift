@@ -27,7 +27,18 @@ class FileManager {
     func startObserving() {
         fileDescriptor = open(url.path, O_EVTONLY)
         source = DispatchSource.makeFileSystemObjectSource(fileDescriptor: fileDescriptor, eventMask: .write, queue: queue)
-        source.setEventHandler(handler: fileChanged)
+        source.setEventHandler() { [weak self] in
+            let eventTypes = self?.source.data
+            if let url = self?.url,
+                eventTypes == .write {
+                do {
+                    let data = try Data(contentsOf: url, options: .alwaysMapped)
+                    print(data.count)
+                } catch {
+                    print(error)
+                }
+            }
+        }
         source.setCancelHandler() {
             print("Cancel")
             close(self.fileDescriptor)
@@ -38,20 +49,5 @@ class FileManager {
     func stopObserving() {
         close(self.fileDescriptor)
         source = nil
-    }
-    
-    func fileChanged() {
-        let eventTypes = source.data
-        if eventTypes == .write {
-//            print("file was written to")
-            do {
-                let data = try Data(contentsOf: url, options: .alwaysMapped)
-                print(data.count)
-            } catch {
-                print(error)
-            }
-            
-            
-        }
     }
 }

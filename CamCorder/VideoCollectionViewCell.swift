@@ -15,7 +15,7 @@ class VideoCollectionViewCell: UICollectionViewCell {
     
     var url: String! {
         didSet {
-            getImageFromVideo()
+            fetchImage()
         }
     }
     
@@ -24,17 +24,16 @@ class VideoCollectionViewCell: UICollectionViewCell {
         imgView.image = nil
     }
     
-    private func getImageFromVideo() {
-        DispatchQueue.global().async {
-            let asset = AVURLAsset(url: URL(string: self.url)!)
-            let generator = AVAssetImageGenerator(asset: asset)
-            generator.appliesPreferredTrackTransform = true
-            let time = CMTime(seconds: 0, preferredTimescale: 1)
+    private func fetchImage() {
+        DispatchQueue.global().async { [weak self] in
+            // hack because too lazy to put imageURL up to firebase
+            let imageURL = (self?.url.replacingOccurrences(of: "videos", with: "images"))!
+            print(imageURL)
             do {
-                let imageRef = try generator.copyCGImage(at: time, actualTime: nil)
+                let data = try Data(contentsOf: URL(string: imageURL)!)
+                let image = UIImage(data: data)
                 DispatchQueue.main.async {
-                    let image = UIImage(cgImage: imageRef)
-                    self.imgView.image = image
+                    self?.imgView.image = image
                 }
             } catch {
                 print(error)

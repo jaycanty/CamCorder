@@ -116,7 +116,7 @@ class VideoListViewController: UIViewController {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumLineSpacing = gap
         layout.minimumInteritemSpacing = gap
-        layout.sectionInset = UIEdgeInsetsMake(gap, gap, 0, gap)
+        layout.sectionInset = UIEdgeInsetsMake(gap, gap, gap, gap)
     }
 }
 

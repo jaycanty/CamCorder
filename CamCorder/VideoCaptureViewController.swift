@@ -105,7 +105,6 @@ class VideoCaptureViewController: UIViewController {
             // Add connection
             let captureConnection = movieFileOutput.connection(withMediaType: AVMediaTypeVideo)!
             if captureSession.canAdd(captureConnection) {
-                
                 if captureConnection.isVideoStabilizationSupported {
                     captureConnection.preferredVideoStabilizationMode = .auto
                 }

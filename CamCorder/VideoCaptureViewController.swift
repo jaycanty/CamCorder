@@ -18,6 +18,8 @@ fileprivate enum CaptureState {
 
 class VideoCaptureViewController: UIViewController {
     
+    @IBOutlet weak var progressContainerView: UIView!
+    @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var controlButton: UIButton!
     
     let captureSession = AVCaptureSession()
@@ -31,55 +33,9 @@ class VideoCaptureViewController: UIViewController {
     // MARK - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Add video input
-        videoDevice = AVCaptureDevice.defaultDevice(
-            withDeviceType: AVCaptureDeviceType.builtInWideAngleCamera,
-            mediaType: AVMediaTypeVideo,
-            position: .front
-        )
-        do {
-            let videoInputDevice = try AVCaptureDeviceInput(device: videoDevice)
-            if captureSession.canAddInput(videoInputDevice) {
-                captureSession.addInput(videoInputDevice)
-            }
-        } catch {
-            print(error)
-        }
-        
-        // Add audio input
-        let audioCaptureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
-        do {
-            let audioInput = try AVCaptureDeviceInput(device: audioCaptureDevice)
-            if captureSession.canAddInput(audioInput) {
-                captureSession.addInput(audioInput)
-            }
-        } catch {
-            print(error)
-        }
-        
-        // Add output
-        movieFileOutput = AVCaptureMovieFileOutput()
-        if captureSession.canAddOutput(movieFileOutput) {
-            captureSession.addOutput(movieFileOutput)
-            // Add connection
-            let captureConnection = movieFileOutput.connection(withMediaType: AVMediaTypeVideo)!
-            if captureSession.canAdd(captureConnection) {
-                
-                if captureConnection.isVideoStabilizationSupported {
-                    captureConnection.preferredVideoStabilizationMode = .auto
-                }
-            }
-        }
-        
-        // Add capture preview layer
-        if let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession) {
-            previewLayer.frame = view.bounds
-            view.layer.addSublayer(previewLayer)
-            previewLayer.zPosition = -1
-            previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-            previewLayer.connection.videoOrientation = .portrait
-        }
+        fileService.delegate = self
+        configureVideoCapture()
+        setupProgressView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -108,13 +64,84 @@ class VideoCaptureViewController: UIViewController {
     }
     
     // MARK: - helpers
-    private func startRecording() {
+    fileprivate func startRecording() {
         let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("movie.mov")
         movieFileOutput.startRecording( toOutputFileURL: fileURL, recordingDelegate: self)
     }
     
-    private func stopRecording() {
+    fileprivate func stopRecording() {
         movieFileOutput.stopRecording()
+    }
+    
+    fileprivate func configureVideoCapture() {
+        // Add video input
+        videoDevice = AVCaptureDevice.defaultDevice(
+            withDeviceType: AVCaptureDeviceType.builtInWideAngleCamera,
+            mediaType: AVMediaTypeVideo,
+            position: .front
+        )
+        do {
+            let videoInputDevice = try AVCaptureDeviceInput(device: videoDevice)
+            if captureSession.canAddInput(videoInputDevice) {
+                captureSession.addInput(videoInputDevice)
+            }
+        } catch {
+            print(error)
+        }
+        // Add audio input
+        let audioCaptureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
+        do {
+            let audioInput = try AVCaptureDeviceInput(device: audioCaptureDevice)
+            if captureSession.canAddInput(audioInput) {
+                captureSession.addInput(audioInput)
+            }
+        } catch {
+            print(error)
+        }
+        // Add output
+        movieFileOutput = AVCaptureMovieFileOutput()
+        if captureSession.canAddOutput(movieFileOutput) {
+            captureSession.addOutput(movieFileOutput)
+            // Add connection
+            let captureConnection = movieFileOutput.connection(withMediaType: AVMediaTypeVideo)!
+            if captureSession.canAdd(captureConnection) {
+                
+                if captureConnection.isVideoStabilizationSupported {
+                    captureConnection.preferredVideoStabilizationMode = .auto
+                }
+            }
+        }
+        // Add capture preview layer
+        if let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession) {
+            previewLayer.frame = view.bounds
+            view.layer.addSublayer(previewLayer)
+            previewLayer.zPosition = -1
+            previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+            previewLayer.connection.videoOrientation = .portrait
+        }
+    }
+    
+    fileprivate func setupProgressView() {
+        progressContainerView.alpha = 0.0
+        progressContainerView.layer.cornerRadius = 10
+        let shadowPath = UIBezierPath(rect: progressContainerView.bounds)
+        progressContainerView.layer.masksToBounds = false
+        progressContainerView.layer.shadowColor = UIColor.black.cgColor
+        progressContainerView.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
+        progressContainerView.layer.shadowOpacity = 0.5
+        progressContainerView.layer.shadowPath = shadowPath.cgPath
+    }
+    
+    fileprivate func showProgress() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.progressContainerView.alpha = 1
+        })
+    }
+    
+    fileprivate func hideProgress() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.progressContainerView.alpha = 0
+        })
     }
 }
 
@@ -124,5 +151,17 @@ extension VideoCaptureViewController: AVCaptureFileOutputRecordingDelegate {
     func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
         print("Did end capture: \(outputFileURL.path)")
         fileService.uploadFile(withURL: outputFileURL)
+        showProgress()
+    }
+}
+
+extension VideoCaptureViewController: FileServiceDelegate {
+    
+    func update(progress: Float) {
+        progressBar.setProgress(progress, animated: true)
+    }
+    
+    func uploadComplete(success: Bool) {
+        hideProgress()
     }
 }

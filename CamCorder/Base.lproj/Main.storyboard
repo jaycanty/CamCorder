@@ -58,15 +58,50 @@
                                     <action selector="controlButtonHit:" destination="i5c-3N-Ccm" eventType="touchUpInside" id="ZY7-CU-I6P"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEJ-oF-lXY">
+                                <rect key="frame" x="87" y="311" width="200" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uploading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXe-uZ-KEp">
+                                        <rect key="frame" x="61" y="18" width="79" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="79" id="IwB-PN-9nl"/>
+                                            <constraint firstAttribute="height" constant="21" id="ZeV-vd-hVF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JMQ-qr-YGP">
+                                        <rect key="frame" x="25" y="8" width="150" height="2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="RNP-X0-gwY"/>
+                                            <constraint firstAttribute="width" constant="150" id="znX-iY-9YP"/>
+                                        </constraints>
+                                    </progressView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="JMQ-qr-YGP" firstAttribute="centerX" secondItem="OEJ-oF-lXY" secondAttribute="centerX" id="Afe-bU-HNE"/>
+                                    <constraint firstItem="fXe-uZ-KEp" firstAttribute="top" secondItem="JMQ-qr-YGP" secondAttribute="bottom" constant="8" id="G37-un-k5h"/>
+                                    <constraint firstAttribute="height" constant="45" id="QY2-hd-scl"/>
+                                    <constraint firstItem="fXe-uZ-KEp" firstAttribute="centerX" secondItem="OEJ-oF-lXY" secondAttribute="centerX" id="dzs-cL-1KO"/>
+                                    <constraint firstAttribute="width" constant="200" id="g5p-qn-GTJ"/>
+                                    <constraint firstItem="JMQ-qr-YGP" firstAttribute="top" secondItem="OEJ-oF-lXY" secondAttribute="top" constant="8" id="pMH-Rm-aKG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="s5v-IW-uzR" firstAttribute="centerX" secondItem="ecw-Sb-agu" secondAttribute="centerX" id="35C-BL-i2P"/>
                             <constraint firstItem="tFX-yH-cIj" firstAttribute="top" secondItem="s5v-IW-uzR" secondAttribute="bottom" constant="20" id="EsB-vx-n4D"/>
+                            <constraint firstItem="OEJ-oF-lXY" firstAttribute="centerY" secondItem="ecw-Sb-agu" secondAttribute="centerY" id="IrV-cX-489"/>
+                            <constraint firstItem="OEJ-oF-lXY" firstAttribute="centerX" secondItem="ecw-Sb-agu" secondAttribute="centerX" id="qLU-XU-Qr8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="controlButton" destination="s5v-IW-uzR" id="GAQ-oA-0BO"/>
+                        <outlet property="progressBar" destination="JMQ-qr-YGP" id="zNg-cY-HAj"/>
+                        <outlet property="progressContainerView" destination="OEJ-oF-lXY" id="1lf-Lx-SR1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zri-or-R0O" userLabel="First Responder" sceneMemberID="firstResponder"/>

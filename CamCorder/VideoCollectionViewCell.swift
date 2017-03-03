@@ -15,6 +15,8 @@ class VideoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var progressContainerView: UIView!
     @IBOutlet weak var progressBar: UIProgressView!
     
+    private static let cache = NSCache<NSString, UIImage>()
+    
     var data: Any! {
         didSet {
             if let url = data as? String {
@@ -38,15 +40,22 @@ class VideoCollectionViewCell: UICollectionViewCell {
         progressBar.progress = 0
     }
     
-    private func fetchImage(url: String) {
+    private func fetchImage(url: String) {    
         DispatchQueue.global().async { [weak self] in
             // hack because too lazy to put imageURL up to firebase
             let imageURL = url.replacingOccurrences(of: "videos", with: "images")
-            do {
-                let data = try Data(contentsOf: URL(string: imageURL)!)
-                let image = UIImage(data: data)
+            if let image = VideoCollectionViewCell.cache.object(forKey: imageURL as NSString) {
                 DispatchQueue.main.async {
                     self?.imgView.image = image
+                }
+            }
+            do {
+                let data = try Data(contentsOf: URL(string: imageURL)!)
+                if let image = UIImage(data: data) {
+                    VideoCollectionViewCell.cache.setObject(image, forKey: imageURL as NSString)
+                    DispatchQueue.main.async {
+                        self?.imgView.image = image
+                    }
                 }
             } catch {
                 print(error)

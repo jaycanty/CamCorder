@@ -35,6 +35,7 @@ class VideoCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         imgView.image = nil
         progressContainerView.alpha = 0
+        progressBar.progress = 0
     }
     
     private func fetchImage(url: String) {

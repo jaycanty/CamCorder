@@ -58,7 +58,7 @@ class VideoListViewController: UIViewController {
     
     func videosDidUpdate(snapshot: FIRDataSnapshot) {
         // This is so bad but firebase is refreshing before the queue empties
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
             self?.data.removeAll()
             for child in snapshot.children {
                 if let child = child as? FIRDataSnapshot,

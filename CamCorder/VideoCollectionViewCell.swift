@@ -29,7 +29,7 @@ class VideoCollectionViewCell: UICollectionViewCell {
             let asset = AVURLAsset(url: URL(string: self.url)!)
             let generator = AVAssetImageGenerator(asset: asset)
             generator.appliesPreferredTrackTransform = true
-            let time = CMTime(seconds: 1, preferredTimescale: 1)
+            let time = CMTime(seconds: 0, preferredTimescale: 1)
             do {
                 let imageRef = try generator.copyCGImage(at: time, actualTime: nil)
                 DispatchQueue.main.async {

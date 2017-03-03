@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import AVKit
 import Firebase
 
 class VideoListViewController: UIViewController {
@@ -15,13 +16,24 @@ class VideoListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
     var database: FIRDatabase!
+    var videosRef: FIRDatabaseReference!
     var urls = [String]()
 
     // MARK - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         database = FIRDatabase.database()
+        videosRef = database.reference(withPath: "videos")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         observeVideos()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        videosRef.removeAllObservers()
     }
     
     // MARK - actions
@@ -40,9 +52,7 @@ class VideoListViewController: UIViewController {
     // MARK: - observe
     
     func observeVideos() {
-        
-        let ref = database.reference(withPath: "videos")
-        ref.observe(.value, with: videosDidUpdate)
+        videosRef.observe(.value, with: videosDidUpdate)
     }
     
     func videosDidUpdate(snapshot: FIRDataSnapshot) {
@@ -105,9 +115,23 @@ extension VideoListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCollectionViewCell", for: indexPath) as! VideoCollectionViewCell
-        cell.url = urls[indexPath.row]
+        cell.url = urls[indexPath.item]
         return cell
+    }
+}
+
+extension VideoListViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let url = urls[indexPath.item]
+        showVideo(url: URL(string: url)!)
+    }
+    
+    private func showVideo(url: URL) {
+        let controller = AVPlayerViewController()
+        controller.player = AVPlayer(url: url)
+        controller.title = "View"
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

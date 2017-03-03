@@ -97,15 +97,10 @@
 			children = (
 				6944F0031E687C9A00B1DDE0 /* AppDelegate.swift */,
 				6944F0071E687C9A00B1DDE0 /* Main.storyboard */,
-				6944F00A1E687C9A00B1DDE0 /* Assets.xcassets */,
-				6944F00C1E687C9A00B1DDE0 /* LaunchScreen.storyboard */,
-				6944F00F1E687C9A00B1DDE0 /* Info.plist */,
-				6944F0251E68807A00B1DDE0 /* VideoListViewController.swift */,
-				697A05C41E691997006A2487 /* VideoCollectionViewCell.swift */,
-				692BE6F91E688667004960B4 /* VideoCaptureViewController.swift */,
-				692BE6FD1E68C0EC004960B4 /* VideoManager.swift */,
-				697A05C61E69B873006A2487 /* VideoUploader.swift */,
-				692BE6FF1E68DD5D004960B4 /* GoogleService-Info.plist */,
+				697A05C81E6A0EC4006A2487 /* view-videos */,
+				697A05C91E6A0EE7006A2487 /* make-videos */,
+				697A05CA1E6A0EF9006A2487 /* shared */,
+				697A05CB1E6A0F1A006A2487 /* support */,
 			);
 			path = CamCorder;
 			sourceTree = "<group>";
@@ -117,6 +112,43 @@
 				6944F01A1E687C9A00B1DDE0 /* Info.plist */,
 			);
 			path = CamCorderTests;
+			sourceTree = "<group>";
+		};
+		697A05C81E6A0EC4006A2487 /* view-videos */ = {
+			isa = PBXGroup;
+			children = (
+				6944F0251E68807A00B1DDE0 /* VideoListViewController.swift */,
+				697A05C41E691997006A2487 /* VideoCollectionViewCell.swift */,
+			);
+			name = "view-videos";
+			sourceTree = "<group>";
+		};
+		697A05C91E6A0EE7006A2487 /* make-videos */ = {
+			isa = PBXGroup;
+			children = (
+				692BE6F91E688667004960B4 /* VideoCaptureViewController.swift */,
+			);
+			name = "make-videos";
+			sourceTree = "<group>";
+		};
+		697A05CA1E6A0EF9006A2487 /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				692BE6FD1E68C0EC004960B4 /* VideoManager.swift */,
+				697A05C61E69B873006A2487 /* VideoUploader.swift */,
+			);
+			name = shared;
+			sourceTree = "<group>";
+		};
+		697A05CB1E6A0F1A006A2487 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				6944F00A1E687C9A00B1DDE0 /* Assets.xcassets */,
+				6944F00C1E687C9A00B1DDE0 /* LaunchScreen.storyboard */,
+				6944F00F1E687C9A00B1DDE0 /* Info.plist */,
+				692BE6FF1E68DD5D004960B4 /* GoogleService-Info.plist */,
+			);
+			name = support;
 			sourceTree = "<group>";
 		};
 		92D364F9BFE043315375778D /* Frameworks */ = {

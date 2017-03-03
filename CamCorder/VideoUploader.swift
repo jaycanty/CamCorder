@@ -24,17 +24,17 @@ class VideoUploader: Operation {
     private let database = FIRDatabase.database()
     weak var delegate: VideoUploaderDelegate?
     
-    var isVideoComplete = false {
+    private var isVideoComplete = false {
         didSet {
            checkAndMarkComplete()
         }
     }
-    var isImageComplete = false {
+    private var isImageComplete = false {
         didSet {
             checkAndMarkComplete()
         }
     }
-    var _isFinished = false {
+    private var _isFinished = false {
         willSet {
             willChangeValue(forKey: "isFinished")
         }
@@ -42,7 +42,7 @@ class VideoUploader: Operation {
             didChangeValue(forKey: "isFinished")
         }
     }
-    var _isExecuting = false {
+    private var _isExecuting = false {
         willSet {
             willChangeValue(forKey: "isExecuting")
         }

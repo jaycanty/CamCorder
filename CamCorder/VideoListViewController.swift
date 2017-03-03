@@ -15,9 +15,9 @@ class VideoListViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
 
-    var database: FIRDatabase!
-    var videosRef: FIRDatabaseReference!
-    var data = [Any]()
+    private var database: FIRDatabase!
+    private var videosRef: FIRDatabaseReference!
+    fileprivate var data = [Any]()
 
     // MARK - lifecycle
     override func viewDidLoad() {
@@ -74,7 +74,7 @@ class VideoListViewController: UIViewController {
     }
     
     // MARK: - observe
-    func observeVideos() {
+    private func observeVideos() {
         videosRef.observe(.value, with: videosDidUpdate)
     }
     

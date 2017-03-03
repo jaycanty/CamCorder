@@ -22,7 +22,8 @@ class FileService {
     weak var delegate: FileServiceDelegate?
     
     func uploadFile(withURL url: URL) {
-        let ref = storage.reference().child("movie.mov")
+        let id = UUID().uuidString
+        let ref = storage.reference().child(id)
         let task = ref.putFile(url)
         task.observe(.progress) { snapshot in
             if let complete = snapshot.progress?.completedUnitCount,

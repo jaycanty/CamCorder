@@ -18,15 +18,11 @@ fileprivate enum CaptureState {
 
 class VideoCaptureViewController: UIViewController {
     
-    @IBOutlet weak var progressContainerView: UIView!
-    @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var controlButton: UIButton!
     
     let captureSession = AVCaptureSession()
     var movieFileOutput: AVCaptureMovieFileOutput!
     var videoDevice: AVCaptureDevice!
-    var fileManager: FileManager?
-    let fileService = FileService()
     
     private var state: CaptureState = .stopped
 
@@ -34,9 +30,7 @@ class VideoCaptureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "CamCorder"
-        fileService.delegate = self
         configureVideoCapture()
-        setupProgressView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -121,53 +115,14 @@ class VideoCaptureViewController: UIViewController {
             previewLayer.connection.videoOrientation = .portrait
         }
     }
-    
-    fileprivate func setupProgressView() {
-        progressContainerView.alpha = 0.0
-        progressContainerView.layer.cornerRadius = 10
-        let shadowPath = UIBezierPath(rect: progressContainerView.bounds)
-        progressContainerView.layer.masksToBounds = false
-        progressContainerView.layer.shadowColor = UIColor.black.cgColor
-        progressContainerView.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
-        progressContainerView.layer.shadowOpacity = 0.5
-        progressContainerView.layer.shadowPath = shadowPath.cgPath
-    }
-    
-    fileprivate func showProgress() {
-        UIView.animate(withDuration: 0.25, animations: {
-            self.progressContainerView.alpha = 1
-        })
-    }
-    
-    fileprivate func hideProgress() {
-        UIView.animate(withDuration: 0.25, animations: {
-            self.progressContainerView.alpha = 0
-        })
-    }
 }
 
 // MARK: - AVCaptureFileOutputRecordingDelegate
 extension VideoCaptureViewController: AVCaptureFileOutputRecordingDelegate {
     
-    func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {
-        fileManager = FileManager(url: fileURL)
-        fileManager?.stopObserving()
-    }
-    
     func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
         print("Did end capture: \(outputFileURL.path)")
-        fileService.prepareAndUpload(videoAtURL: outputFileURL)
-        showProgress()
-    }
-}
-
-extension VideoCaptureViewController: FileServiceDelegate {
-    
-    func update(progress: Float) {
-        progressBar.setProgress(progress, animated: true)
-    }
-    
-    func uploadComplete(success: Bool) {
-        hideProgress()
+        FileManager.shared.startUpload(url: outputFileURL)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
 }

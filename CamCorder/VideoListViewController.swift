@@ -24,6 +24,7 @@ class VideoListViewController: UIViewController {
         super.viewDidLoad()
         database = FIRDatabase.database()
         videosRef = database.reference(withPath: "videos")
+        configureCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +51,6 @@ class VideoListViewController: UIViewController {
     }
     
     // MARK: - observe
-    
     func observeVideos() {
         videosRef.observe(.value, with: videosDidUpdate)
     }
@@ -104,7 +104,19 @@ class VideoListViewController: UIViewController {
     }
     
     private func showError() {
-        // TODO: show popup
+        let alert = UIAlertController(title: "Hi", message: "You will need to go to settings to allow permissions", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func configureCollectionView() {
+        
+        let gap = (UIScreen.main.bounds.width - 300) / 3
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumLineSpacing = gap
+        layout.minimumInteritemSpacing = gap
+        layout.sectionInset = UIEdgeInsetsMake(gap, gap, 0, gap)
     }
 }
 

@@ -39,7 +39,11 @@ class VideoListViewController: UIViewController {
     
     // MARK - handlers
     @IBAction func addVideoButtonHit(_ sender: UIBarButtonItem) {
-        let discovery = AVCaptureDeviceDiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaTypeVideo, position: .unspecified)
+        let discovery = AVCaptureDeviceDiscoverySession(
+            deviceTypes: [.builtInWideAngleCamera],
+            mediaType: AVMediaTypeVideo,
+            position: .unspecified
+        )
         if discovery?.devices.count == 0 { return }
         checkVideoPermissions() { isVideoAllowed in
             if isVideoAllowed {
@@ -63,11 +67,7 @@ class VideoListViewController: UIViewController {
                 }
             }
             for operation in VideoManager.shared.operations {
-                print(operation.isExecuting)
-                print(operation.isFinished)
-                if operation.isExecuting && !operation.isFinished {
-                    self?.data.append(operation)
-                }
+                self?.data.append(operation)
             }
             self?.collectionView.reloadData()
         }

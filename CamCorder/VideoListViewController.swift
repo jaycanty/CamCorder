@@ -39,6 +39,8 @@ class VideoListViewController: UIViewController {
     
     // MARK - handlers
     @IBAction func addVideoButtonHit(_ sender: UIBarButtonItem) {
+        let discovery = AVCaptureDeviceDiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaTypeVideo, position: .unspecified)
+        if discovery?.devices.count == 0 { return }
         checkVideoPermissions() { isVideoAllowed in
             if isVideoAllowed {
                 self.checkAudioPermissions() { isAudioAllowed in

@@ -101,8 +101,8 @@
 				6944F0251E68807A00B1DDE0 /* VideoListViewController.swift */,
 				692BE6F91E688667004960B4 /* VideoCaptureViewController.swift */,
 				692BE6FD1E68C0EC004960B4 /* FileManager.swift */,
-				692BE6FF1E68DD5D004960B4 /* GoogleService-Info.plist */,
 				692BE7011E68DDFE004960B4 /* FileService.swift */,
+				692BE6FF1E68DD5D004960B4 /* GoogleService-Info.plist */,
 			);
 			path = CamCorder;
 			sourceTree = "<group>";

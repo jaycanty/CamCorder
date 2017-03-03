@@ -37,9 +37,11 @@ class FileService {
                     self.write(url: url)
                 }
             }
+            task.removeAllObservers()
         }
         task.observe(.failure) { snapshot in
             self.delegate?.uploadComplete(success: false)
+            task.removeAllObservers()
         }
     }
     

@@ -124,7 +124,6 @@ class VideoListViewController: UIViewController {
     }
     
     private func configureCollectionView() {
-        
         let gap = (UIScreen.main.bounds.width - 300) / 3
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumLineSpacing = gap

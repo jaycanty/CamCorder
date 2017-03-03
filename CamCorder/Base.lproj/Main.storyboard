@@ -40,6 +40,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VUy-0I-ZzH">
                                                     <rect key="frame" x="2" y="2" width="146" height="196"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uix-43-dka">
                                                     <rect key="frame" x="10" y="77" width="130" height="47"/>

@@ -76,7 +76,7 @@ class VideoCaptureViewController: UIViewController {
         videoDevice = AVCaptureDevice.defaultDevice(
             withDeviceType: AVCaptureDeviceType.builtInWideAngleCamera,
             mediaType: AVMediaTypeVideo,
-            position: .front
+            position: .back
         )
         do {
             let videoInputDevice = try AVCaptureDeviceInput(device: videoDevice)

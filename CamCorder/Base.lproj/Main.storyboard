@@ -39,8 +39,39 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VUy-0I-ZzH">
-                                                    <rect key="frame" x="2" y="2" width="156" height="196"/>
+                                                    <rect key="frame" x="2" y="2" width="146" height="196"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uix-43-dka">
+                                                    <rect key="frame" x="10" y="77" width="130" height="47"/>
+                                                    <subviews>
+                                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lcs-Ap-uXd">
+                                                            <rect key="frame" x="0.0" y="8" width="130" height="2"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="2" id="246-Nt-MU7"/>
+                                                            </constraints>
+                                                        </progressView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uploading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Exe-X6-3Xw">
+                                                            <rect key="frame" x="25.5" y="18" width="79" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="Oi9-W1-8Fb"/>
+                                                                <constraint firstAttribute="width" constant="79" id="stu-ND-erf"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="Lcs-Ap-uXd" firstAttribute="leading" secondItem="uix-43-dka" secondAttribute="leading" id="8ZV-qN-vUS"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Lcs-Ap-uXd" secondAttribute="trailing" id="B7V-6I-U3X"/>
+                                                        <constraint firstItem="Exe-X6-3Xw" firstAttribute="centerX" secondItem="uix-43-dka" secondAttribute="centerX" id="Sbw-Cl-RAl"/>
+                                                        <constraint firstAttribute="width" constant="130" id="X8Z-fd-j65"/>
+                                                        <constraint firstAttribute="height" constant="47" id="mUv-zq-uQt"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Exe-X6-3Xw" secondAttribute="bottom" constant="8" id="uYT-Fv-aP0"/>
+                                                        <constraint firstItem="Lcs-Ap-uXd" firstAttribute="top" secondItem="uix-43-dka" secondAttribute="top" constant="8" id="xUl-f5-5KF"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,10 +79,14 @@
                                             <constraint firstItem="VUy-0I-ZzH" firstAttribute="top" secondItem="ClI-L4-wQ9" secondAttribute="top" constant="2" id="9Bg-7e-xde"/>
                                             <constraint firstAttribute="bottom" secondItem="VUy-0I-ZzH" secondAttribute="bottom" constant="2" id="Kdr-ZB-SOe"/>
                                             <constraint firstItem="VUy-0I-ZzH" firstAttribute="leading" secondItem="ClI-L4-wQ9" secondAttribute="leading" constant="2" id="Lgn-TF-FE3"/>
+                                            <constraint firstItem="uix-43-dka" firstAttribute="centerX" secondItem="ClI-L4-wQ9" secondAttribute="centerX" id="dk4-dS-pxz"/>
                                             <constraint firstAttribute="trailing" secondItem="VUy-0I-ZzH" secondAttribute="trailing" constant="2" id="sMS-DN-g3A"/>
+                                            <constraint firstItem="uix-43-dka" firstAttribute="centerY" secondItem="ClI-L4-wQ9" secondAttribute="centerY" id="t7B-WA-h6O"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imgView" destination="VUy-0I-ZzH" id="lsc-Wj-W8Z"/>
+                                            <outlet property="progressBar" destination="Lcs-Ap-uXd" id="vGs-aN-ED8"/>
+                                            <outlet property="progressContainerView" destination="uix-43-dka" id="l8X-3i-aid"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

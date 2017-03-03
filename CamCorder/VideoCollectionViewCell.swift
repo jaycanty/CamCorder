@@ -12,6 +12,8 @@ import AVFoundation
 class VideoCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var progressContainerView: UIView!
+    @IBOutlet weak var progressBar: UIProgressView!
     
     var url: String! {
         didSet {
@@ -39,5 +41,39 @@ class VideoCollectionViewCell: UICollectionViewCell {
                 print(error)
             }
         }
+    }
+    
+    fileprivate func setupProgressView() {
+        progressContainerView.alpha = 0.0
+        progressContainerView.layer.cornerRadius = 10
+        let shadowPath = UIBezierPath(rect: progressContainerView.bounds)
+        progressContainerView.layer.masksToBounds = false
+        progressContainerView.layer.shadowColor = UIColor.black.cgColor
+        progressContainerView.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
+        progressContainerView.layer.shadowOpacity = 0.5
+        progressContainerView.layer.shadowPath = shadowPath.cgPath
+    }
+    
+    fileprivate func showProgress() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.progressContainerView.alpha = 1
+        })
+    }
+    
+    fileprivate func hideProgress() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.progressContainerView.alpha = 0
+        })
+    }
+}
+
+extension VideoCollectionViewCell: VideoUploaderDelegate {
+    
+    func update(progress: Float) {
+        showProgress()
+    }
+    
+    func uploadComplete(success: Bool) {
+        hideProgress()
     }
 }

@@ -123,6 +123,5 @@ extension VideoCaptureViewController: AVCaptureFileOutputRecordingDelegate {
     func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
         print("Did end capture: \(outputFileURL.path)")
         FileManager.shared.startUpload(url: outputFileURL)
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
 }

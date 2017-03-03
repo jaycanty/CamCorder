@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 class FileManager {
     
@@ -21,7 +21,11 @@ class FileManager {
     }()
     
     func startUpload(url: URL) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let operation = VideoUploader(url: url)
+        operation.completionBlock = {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
         uploadQueue.addOperation(operation)
     }
 }

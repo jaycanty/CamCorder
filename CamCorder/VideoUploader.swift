@@ -18,16 +18,56 @@ protocol VideoUploaderDelegate: class {
 
 class VideoUploader: Operation {
     
+    var fileURL: URL
     let storage = FIRStorage.storage()
     let database = FIRDatabase.database()
-    weak var delegate: FileServiceDelegate?
-    var fileURL: URL
+    weak var delegate: VideoUploaderDelegate?
+    
+    var isVideoComplete = false {
+        didSet {
+           checkAndMarkComplete()
+        }
+    }
+    var isImageComplete = false {
+        didSet {
+            checkAndMarkComplete()
+        }
+    }
+    var _isFinished = false {
+        willSet {
+            willChangeValue(forKey: "isFinished")
+        }
+        didSet {
+            didChangeValue(forKey: "isFinished")
+        }
+    }
+    var _isExecuting = false {
+        willSet {
+            willChangeValue(forKey: "isExecuting")
+        }
+        didSet {
+            didChangeValue(forKey: "isExecuting")
+        }
+    }
+    
+    override var isAsynchronous: Bool {
+        return true
+    }
+    
+    override var isExecuting: Bool {
+        return _isExecuting
+    }
+    
+    override var isFinished: Bool {
+        return _isFinished
+    }
     
     init(url: URL) {
         fileURL = url
     }
     
-    override func main() {
+    override func start() {
+        _isExecuting = true
         prepareAndUpload()
     }
     
@@ -42,22 +82,26 @@ class VideoUploader: Operation {
     func uploadFile(forID id: String) {
         let ref = storage.reference(withPath: "videos").child(id)
         let task = ref.putFile(fileURL)
-        task.observe(.progress) { snapshot in
+        task.observe(.progress) { [weak self] snapshot in
             if let complete = snapshot.progress?.completedUnitCount,
                 let total = snapshot.progress?.totalUnitCount, total > 0 {
-                self.delegate?.update(progress: Float(complete)/Float(total))
+                self?.delegate?.update(progress: Float(complete)/Float(total))
+                print("progress")
             }
         }
-        task.observe(.success) { snapshot in
-            self.delegate?.uploadComplete(success: true)
+        task.observe(.success) { [weak self] snapshot in
+            self?.delegate?.uploadComplete(success: true)
             if let videoURL = snapshot.metadata?.downloadURL() {
-                self.writeVideo(atURL: videoURL)
+                self?.writeVideo(atURL: videoURL)
             }
+            print("success")
             task.removeAllObservers()
         }
-        task.observe(.failure) { snapshot in
-            self.delegate?.uploadComplete(success: false)
+        task.observe(.failure) { [weak self] snapshot in
+            self?.delegate?.uploadComplete(success: false)
+            print("failure")
             task.removeAllObservers()
+            self?.isVideoComplete = true
         }
     }
     
@@ -66,13 +110,17 @@ class VideoUploader: Operation {
             return
         }
         let ref = storage.reference(withPath: "images").child(id)
-        let _ = ref.put(data)
+        ref.put(data, metadata: nil) { [weak self] meta, error in
+           self?.isImageComplete = true
+        }
     }
     
     func writeVideo(atURL videoURL: URL) {
         let ref = database.reference().child("videos")
         let movieRef = ref.childByAutoId()
-        movieRef.setValue(videoURL.absoluteString)
+        movieRef.setValue(videoURL.absoluteString) { [weak self] error, ref in
+            self?.isVideoComplete = true
+        }
     }
     
     func getDisplayImage() -> UIImage? {
@@ -90,6 +138,13 @@ class VideoUploader: Operation {
         } catch {
             print(error)
             return nil
+        }
+    }
+    
+    private func checkAndMarkComplete() {
+        if isImageComplete && isVideoComplete {
+            _isExecuting = false
+            _isFinished = true
         }
     }
 }

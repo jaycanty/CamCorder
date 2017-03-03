@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class FileManager: NSObject {
+class VideoManager: NSObject {
     
-    static let shared = FileManager()
+    static let shared = VideoManager()
     
     lazy var uploadQueue: OperationQueue = {
         let queue = OperationQueue()
@@ -20,9 +20,9 @@ class FileManager: NSObject {
         return queue
     }()
     
-    func startUpload(url: URL) {
+    func startUpload(url: URL, id: String) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        let operation = VideoUploader(url: url)
+        let operation = VideoUploader(url: url, id: id)
         operation.completionBlock = {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }

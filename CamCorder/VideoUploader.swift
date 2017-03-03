@@ -18,9 +18,10 @@ protocol VideoUploaderDelegate: class {
 
 class VideoUploader: Operation {
     
-    var fileURL: URL
-    let storage = FIRStorage.storage()
-    let database = FIRDatabase.database()
+    private var fileURL: URL
+    private var id: String
+    private let storage = FIRStorage.storage()
+    private let database = FIRDatabase.database()
     weak var delegate: VideoUploaderDelegate?
     
     var isVideoComplete = false {
@@ -62,8 +63,9 @@ class VideoUploader: Operation {
         return _isFinished
     }
     
-    init(url: URL) {
+    init(url: URL, id: String) {
         fileURL = url
+        self.id = id
     }
     
     override func start() {
@@ -72,14 +74,13 @@ class VideoUploader: Operation {
     }
     
     func prepareAndUpload() {
-        let id = UUID().uuidString
-        uploadFile(forID: id)
+        uploadFile()
         if let image = getDisplayImage() {
             upload(image: image, forID: id)
         }
     }
     
-    func uploadFile(forID id: String) {
+    func uploadFile() {
         let ref = storage.reference(withPath: "videos").child(id)
         let task = ref.putFile(fileURL)
         task.observe(.progress) { [weak self] snapshot in
@@ -141,10 +142,24 @@ class VideoUploader: Operation {
         }
     }
     
-    private func checkAndMarkComplete() {
+    private func checkAndMarkComplete(shouldRemoveFile: Bool = true) {
         if isImageComplete && isVideoComplete {
+            if shouldRemoveFile {
+                removeFile()
+            }
             _isExecuting = false
             _isFinished = true
+        }
+    }
+    
+    private func removeFile() {
+        let fm = FileManager.default
+        if fm.fileExists(atPath: fileURL.path) {
+            do {
+              try fm.removeItem(at: fileURL)
+            } catch {
+                print(error)
+            }
         }
     }
 }

@@ -20,11 +20,12 @@ class VideoCaptureViewController: UIViewController {
     
     @IBOutlet weak var controlButton: UIButton!
     
-    let captureSession = AVCaptureSession()
-    var movieFileOutput: AVCaptureMovieFileOutput!
-    var videoDevice: AVCaptureDevice!
+    private let captureSession = AVCaptureSession()
+    private var movieFileOutput: AVCaptureMovieFileOutput!
+    private var videoDevice: AVCaptureDevice!
     
     private var state: CaptureState = .stopped
+    fileprivate var uuid: String?
 
     // MARK - lifecycle
     override func viewDidLoad() {
@@ -60,16 +61,17 @@ class VideoCaptureViewController: UIViewController {
     }
     
     // MARK: - helpers
-    fileprivate func startRecording() {
-        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("movie.mov")
+    private func startRecording() {
+        uuid = UUID().uuidString
+        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(uuid!)
         movieFileOutput.startRecording( toOutputFileURL: fileURL, recordingDelegate: self)
     }
     
-    fileprivate func stopRecording() {
+    private func stopRecording() {
         movieFileOutput.stopRecording()
     }
     
-    fileprivate func configureVideoCapture() {
+    private func configureVideoCapture() {
         // Add video input
         videoDevice = AVCaptureDevice.defaultDevice(
             withDeviceType: AVCaptureDeviceType.builtInWideAngleCamera,
@@ -122,6 +124,6 @@ extension VideoCaptureViewController: AVCaptureFileOutputRecordingDelegate {
     
     func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
         print("Did end capture: \(outputFileURL.path)")
-        FileManager.shared.startUpload(url: outputFileURL)
+        VideoManager.shared.startUpload(url: outputFileURL, id: uuid!)
     }
 }

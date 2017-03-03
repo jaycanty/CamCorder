@@ -62,7 +62,7 @@ class VideoListViewController: UIViewController {
                     self?.data.append(value)
                 }
             }
-            for operation in FileManager.shared.uploadQueue.operations {
+            for operation in VideoManager.shared.uploadQueue.operations {
                 print(operation.isExecuting)
                 print(operation.isFinished)
                 if operation.isExecuting && !operation.isFinished {

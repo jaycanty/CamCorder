@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FileManager {
+class FileManager: NSObject {
     
     static let shared = FileManager()
     
@@ -17,6 +17,7 @@ class FileManager {
         let queue = OperationQueue()
         queue.name = "Upload Queue"
         queue.maxConcurrentOperationCount = 1
+        queue.addObserver(self, forKeyPath: "operationCount", options: .new, context: nil)
         return queue
     }()
     
@@ -27,5 +28,9 @@ class FileManager {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
         uploadQueue.addOperation(operation)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        print("Queue changed: \(uploadQueue.operationCount)")
     }
 }

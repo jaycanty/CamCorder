@@ -17,7 +17,7 @@ class VideoListViewController: UIViewController {
 
     var database: FIRDatabase!
     var videosRef: FIRDatabaseReference!
-    var urls = [String]()
+    var data = [Any]()
 
     // MARK - lifecycle
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class VideoListViewController: UIViewController {
         videosRef.removeAllObservers()
     }
     
-    // MARK - actions
+    // MARK - handlers
     @IBAction func addVideoButtonHit(_ sender: UIBarButtonItem) {
         checkVideoPermissions() { isVideoAllowed in
             if isVideoAllowed {
@@ -50,20 +50,30 @@ class VideoListViewController: UIViewController {
         }
     }
     
+    func videosDidUpdate(snapshot: FIRDataSnapshot) {
+        // This is so bad but firebase is refreshing before the queue empties
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
+            self?.data.removeAll()
+            for child in snapshot.children {
+                if let child = child as? FIRDataSnapshot,
+                    let value = child.value as? String {
+                    self?.data.append(value)
+                }
+            }
+            for operation in FileManager.shared.uploadQueue.operations {
+                print(operation.isExecuting)
+                print(operation.isFinished)
+                if operation.isExecuting && !operation.isFinished {
+                    self?.data.append(operation)
+                }
+            }
+            self?.collectionView.reloadData()
+        }
+    }
+    
     // MARK: - observe
     func observeVideos() {
         videosRef.observe(.value, with: videosDidUpdate)
-    }
-    
-    func videosDidUpdate(snapshot: FIRDataSnapshot) {
-        urls.removeAll()
-        for child in snapshot.children {
-            if let child = child as? FIRDataSnapshot,
-                let value = child.value as? String {
-                urls.append(value)
-            }
-        }
-        collectionView.reloadData()
     }
     
     // MARK: - permissions
@@ -97,6 +107,7 @@ class VideoListViewController: UIViewController {
         }
     }
     
+    // MARK: - UI
     private func showVideoCapture() {
         if let videoCaptureViewController = storyboard?.instantiateViewController(withIdentifier: "VideoCaptureViewController") {
             navigationController?.pushViewController(videoCaptureViewController, animated: true)
@@ -123,12 +134,12 @@ class VideoListViewController: UIViewController {
 extension VideoListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return urls.count
+        return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCollectionViewCell", for: indexPath) as! VideoCollectionViewCell
-        cell.url = urls[indexPath.item]
+        cell.data = data[indexPath.item]
         return cell
     }
 }
@@ -136,8 +147,10 @@ extension VideoListViewController: UICollectionViewDataSource {
 extension VideoListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let url = urls[indexPath.item]
-        showVideo(url: URL(string: url)!)
+        let cellData = data[indexPath.item]
+        if let url = cellData as? String {
+           showVideo(url: URL(string: url)!)
+        }
     }
     
     private func showVideo(url: URL) {

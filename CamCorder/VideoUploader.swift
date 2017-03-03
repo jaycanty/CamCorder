@@ -87,7 +87,6 @@ class VideoUploader: Operation {
             if let complete = snapshot.progress?.completedUnitCount,
                 let total = snapshot.progress?.totalUnitCount, total > 0 {
                 self?.delegate?.update(progress: Float(complete)/Float(total))
-                print("progress")
             }
         }
         task.observe(.success) { [weak self] snapshot in

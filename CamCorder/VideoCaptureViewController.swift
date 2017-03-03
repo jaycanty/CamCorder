@@ -121,10 +121,8 @@ class VideoCaptureViewController: UIViewController {
 // MARK: - AVCaptureFileOutputRecordingDelegate
 extension VideoCaptureViewController: AVCaptureFileOutputRecordingDelegate {
     
-    func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {
-    }
-    
     func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
+        print("Did end capture: \(outputFileURL.path)")
         fileService.uploadFile(withURL: outputFileURL)
     }
 }

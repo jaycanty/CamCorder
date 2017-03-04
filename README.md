@@ -30,6 +30,7 @@ Let's you record videos and upload to Firebase. Displays uploaded videos and can
 - Error handling
 - Memory profiling
 - Refactor VideoUploader
-- Upload while recording!   
+- Upload while recording! 
+- Compression!  
 
   

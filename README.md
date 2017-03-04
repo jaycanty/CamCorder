@@ -28,6 +28,7 @@ Let's you record videos and upload to Firebase. Displays uploaded videos and can
 #### Todo's
 
 - Error handling
+- Unit tests
 - Memory profiling
 - Refactor VideoUploader
 - Upload while recording! 
